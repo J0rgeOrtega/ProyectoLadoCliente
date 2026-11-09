@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Agregar canción</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #121212;
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .cabecera {
+            background: #1f1f1f;
+            padding: 40px 30px 24px 30px;
+        }
+
+        .cabecera h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .formulario {
+            padding: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9em;
+            color: #b3b3b3;
+            margin: 20px 0 8px 0;
+        }
+
+        input, button {
+            padding: 14px 18px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+        }
+
+        input {
+            background: #2a2a2a;
+            color: white;
+            width: 100%;
+        }
+
+        button {
+            background: #1db954;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        #mensaje {
+            text-align: center;
+            color: #b3b3b3;
+            min-height: 1.2em;
+        }
+
+        .btn-volver {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cabecera">
+        <h1>Agregar canción</h1>
+    </div>
+
+    <div class="formulario">
+        <label for="inputNombre">Nombre de la canción</label>
+        <input type="text" id="inputNombre" placeholder="Nombre de la canción">
+
+        <label for="inputArtista">Artista</label>
+        <input type="text" id="inputArtista" placeholder="Artista">
+
+        <button id="btnAgregarPlaylist">Agregar a la Playlist</button>
+        <p id="mensaje"></p>
+    </div>
+
+    <a href="Playlist.html" id="btnVolver" class="btn-volver">← Volver a la Playlist</a>
+
+    <script>
+    </script>
+</body>
+</html>

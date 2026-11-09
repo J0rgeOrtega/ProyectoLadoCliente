@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Mi Playlist</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #121212;
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .cabecera {
+            background: #1f1f1f;
+            padding: 40px 30px 24px 30px;
+        }
+
+        .cabecera .tipo {
+            font-size: 0.85em;
+            margin: 0;
+        }
+
+        .cabecera h1 {
+            font-size: 3em;
+            margin: 5px 0 10px 0;
+        }
+
+        .cabecera .detalle {
+            font-size: 0.9em;
+            color: #b3b3b3;
+            margin: 0;
+        }
+
+        .controles {
+            display: flex;
+            gap: 10px;
+            padding: 20px 30px;
+            align-items: center;
+        }
+
+        input, button {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+        }
+
+        input {
+            background: #2a2a2a;
+            color: white;
+            width: 100%;
+        }
+
+        button {
+            background: #1db954;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-mezclar {
+            background: white;
+            white-space: nowrap;
+        }
+
+        .encabezado-lista {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            padding: 8px 30px;
+            margin-bottom: 8px;
+            color: #b3b3b3;
+            font-size: 0.9em;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0 18px 110px 18px;
+            margin: 0;
+        }
+
+        li {
+            display: grid;
+            grid-template-columns: 40px 1fr auto;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 6px;
+        }
+
+        .numero {
+            color: #b3b3b3;
+        }
+
+        .nombre {
+            font-size: 1em;
+            margin: 0;
+        }
+
+        .artista {
+            font-size: 0.85em;
+            color: #b3b3b3;
+            margin: 2px 0 0 0;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-cancion {
+            padding: 6px 12px;
+            font-size: 0.8em;
+            background: #2a2a2a;
+            color: white;
+        }
+
+        .btn-eliminar {
+            background: red;
+            color: white;
+        }
+
+        .btn-agregar {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background: #1db954;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 30px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="cabecera">
+        <p class="tipo">Playlist</p>
+        <h1>Nuevas canciones</h1>
+        <p class="detalle" id="contadorCanciones">0 canciones</p>
+    </div>
+
+    <div class="controles">
+        <button id="btnMezclar" class="btn-mezclar">Mezclar</button>
+        <input type="text" id="inputBuscar" placeholder="¿Qué quieres buscar?">
+    </div>
+
+    <div class="encabezado-lista">
+        <span>#</span>
+        <span>Título</span>
+    </div>
+
+    <ul id="listaPlaylist"></ul>
+
+    <a href="Agregar.html" id="btnIrAgregar" class="btn-agregar">+ Agregar canción</a>
+
+    <script>
+    </script>
+</body>
+</html>
