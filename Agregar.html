@@ -22,10 +22,10 @@
             padding: 40px 30px 24px 30px;
         }
 
-        .cabecera h1 {
-            font-size: 3em;
-            margin: 0;
-        }
+            .cabecera h1 {
+                font-size: 3em;
+                margin: 0;
+            }
 
         .formulario {
             padding: 30px;
@@ -98,6 +98,34 @@
     <a href="Playlist.html" id="btnVolver" class="btn-volver">← Volver a la Playlist</a>
 
     <script>
+            let listaPlaylist = JSON.parse(localStorage.getItem("ListaPlaylist")) || [];
+            const inputNombre = document.getElementById("inputNombre");
+            const inputArtista = document.getElementById("inputArtista");
+            const btnAgregarPlaylist = document.getElementById("btnAgregarPlaylist");
+            const mensaje = document.getElementById("mensaje");
+
+            btnAgregarPlaylist.addEventListener("click", () => {
+                let nombre = inputNombre.value;
+                let artista = inputArtista.value;
+                if (nombre == "" || artista == "") {
+                    mensaje.textContent = "No se pueden dejar campos vacios";
+                    return;
+                }
+                listaPlaylist.push({
+                    "nombre": nombre,
+                    "artista": artista
+                });
+                inputNombre.value = "";
+                inputArtista.value = "";
+                localStorage.setItem("ListaPlaylist", JSON.stringify(listaPlaylist));
+                mensaje.textContent = "Cancion agregada";
+            });
+
+
+
+
+
+
     </script>
 </body>
 </html>
