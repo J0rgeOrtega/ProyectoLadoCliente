@@ -162,6 +162,123 @@
     <a href="Agregar.html" id="btnIrAgregar" class="btn-agregar">+ Agregar canción</a>
 
     <script>
+            //leer la playlist del local storage
+            let listaPlaylist = JSON.parse(localStorage.getItem("ListaPlaylist")) || [];
+            const listaHTML = document.getElementById("listaPlaylist");
+            const contadorCanciones = document.getElementById("contadorCanciones");
+            const inputBuscar = document.getElementById("inputBuscar");
+            const btnMezclar = document.getElementById("btnMezclar");
+
+            const guardar = () => {
+                localStorage.setItem("ListaPlaylist", JSON.stringify(listaPlaylist));
+            }
+
+            const eliminar = (indice) => {
+                listaPlaylist.splice(indice, 1);
+                guardar();
+                renderizarHTML();
+            }
+
+            const subir = (indice) => {
+                if (indice == 0) {
+                    return;
+                }
+                let temporal = listaPlaylist[indice];
+                listaPlaylist[indice] = listaPlaylist[indice - 1];
+                listaPlaylist[indice - 1] = temporal;
+                guardar();
+                renderizarHTML();
+            }
+
+            const bajar = (indice) => {
+                if (indice == listaPlaylist.length - 1) {
+                    return;
+                }
+                let temporal = listaPlaylist[indice];
+                listaPlaylist[indice] = listaPlaylist[indice + 1];
+                listaPlaylist[indice + 1] = temporal;
+                guardar();
+                renderizarHTML();
+            }
+
+            const mezclar = () => {
+                let nueva = [];
+                while (listaPlaylist.length > 0) {
+                    let posicion = Math.floor(Math.random() * listaPlaylist.length);
+                    nueva.push(listaPlaylist.splice(posicion, 1)[0]);
+                }
+                listaPlaylist = nueva;
+                guardar();
+                renderizarHTML();
+            }
+
+            const renderizarHTML = () => {
+                listaHTML.innerHTML = "";
+                contadorCanciones.textContent = listaPlaylist.length + " canciones";
+                let texto = inputBuscar.value.toUpperCase();
+                let numero = 0;
+                listaPlaylist.forEach((c, indice) => {
+                    if (!c.nombre.toUpperCase().includes(texto) && !c.artista.toUpperCase().includes(texto)) {
+                        return;
+                    }
+                    numero++;
+
+                    const liHTML = document.createElement("li");
+                    const spanNumero = document.createElement("span");
+                    const divInfo = document.createElement("div");
+                    const pNombre = document.createElement("p");
+                    const pArtista = document.createElement("p");
+                    const divAcciones = document.createElement("div");
+                    const btnSubir = document.createElement("button");
+                    const btnBajar = document.createElement("button");
+                    const btnEliminar = document.createElement("button");
+
+                    spanNumero.classList.add("numero");
+                    spanNumero.textContent = numero;
+                    pNombre.classList.add("nombre");
+                    pNombre.textContent = c.nombre;
+                    pArtista.classList.add("artista");
+                    pArtista.textContent = c.artista;
+                    divAcciones.classList.add("acciones");
+
+                    btnSubir.classList.add("btn-cancion");
+                    btnSubir.textContent = "↑";
+                    btnBajar.classList.add("btn-cancion");
+                    btnBajar.textContent = "↓";
+                    btnEliminar.classList.add("btn-cancion");
+                    btnEliminar.classList.add("btn-eliminar");
+                    btnEliminar.textContent = "Eliminar";
+
+                    btnSubir.addEventListener("click", () => subir(indice));
+                    btnBajar.addEventListener("click", () => bajar(indice));
+                    btnEliminar.addEventListener("click", () => eliminar(indice));
+
+                    divInfo.append(pNombre);
+                    divInfo.append(pArtista);
+                    divAcciones.append(btnSubir);
+                    divAcciones.append(btnBajar);
+                    divAcciones.append(btnEliminar);
+                    liHTML.append(spanNumero);
+                    liHTML.append(divInfo);
+                    liHTML.append(divAcciones);
+                    listaHTML.append(liHTML);
+                });
+            }
+
+            inputBuscar.addEventListener("input", () => renderizarHTML());
+            btnMezclar.addEventListener("click", () => mezclar());
+
+            renderizarHTML();
+
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 </html>
